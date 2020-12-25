@@ -4,13 +4,14 @@ set -ue
 
 DOTPATH=~/.dotfiles
 
-cd ~/.dotfiles
-
 sudo apt-get update
 sudo apt-get upgrade
-sudo apt-get install git tig vim zsh -y
+sudo apt-get install curl git tig vim zsh -y
 
-source ./configure.sh
+cd ~/
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+
+source $DOTPATH/configure.sh
 
 chsh -s /usr/bin/zsh
 
