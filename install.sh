@@ -8,7 +8,7 @@ cd ~/.dotfiles
 
 sudo apt-get update
 sudo apt-get upgrade
-sudo apt-get install git tig vim zsh
+sudo apt-get install git tig vim zsh -y
 
 source ./configure.sh
 
