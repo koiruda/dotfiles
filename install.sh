@@ -2,7 +2,7 @@
 
 set -ue
 
-DOTPATH=~/.dotfiles
+DOTPATH=~/dotfiles
 
 sudo apt-get update
 sudo apt-get upgrade

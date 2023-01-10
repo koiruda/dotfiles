@@ -2,9 +2,9 @@
 
 set -ue
 
-DOTPATH=~/.dotfiles
+DOTPATH=~/dotfiles
 
-cd ~/.dotfiles
+cd ~/dotfiles
 
 for f in .??*
 do
