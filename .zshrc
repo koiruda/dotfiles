@@ -71,3 +71,7 @@ compinit
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 ### End of Zinit's installer chunk
+
+zstyle ':completion:*:default' menu select=2
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
