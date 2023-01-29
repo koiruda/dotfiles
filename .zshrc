@@ -8,6 +8,7 @@ fi
 export HISTFILESIZE=1000000000
 export HISTSIZE=1000000000
 export HISTFILE=~/.zsh_history
+export SAVEHIST=1000000000
 
 setopt share_history
 setopt hist_find_no_dups
