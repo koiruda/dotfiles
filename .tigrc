@@ -1,1 +1,4 @@
 set main-view = line-number:yes,interval=1 date:yes,local=yes id author:full commit-title,graph=v2,refs=yes
+set diff-options = -m --first-parent
+set main-view-date = custom
+set main-view-date-format = "%y%m%d %H%M"
