@@ -75,3 +75,27 @@ compinit
 zstyle ':completion:*:default' menu select=2
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
+alias vi='nvim'
+
+alias t='tig'
+alias ta='tig --all'
+
+alias g='git'
+alias ga='git add'
+alias gb='git branch'
+alias gc='git commit'
+alias gd='git diff'
+alias gp='git pull'
+alias gs='git status'
+alias gsw='git switch'
+alias gre='git restore'
+alias gr='git rebase'
+alias grc='git rebase --continue'
+alias gra='git rebase --abort'
+alias grs='git rebase --skip'
+alias gr1='git rebase -i HEAD~'
+alias gr2='git rebase -i HEAD~~'
+alias gr3='git rebase -i HEAD~~~'
+alias gr4='git rebase -i HEAD~~~~'
+alias gr5='git rebase -i HEAD~~~~~'
+
