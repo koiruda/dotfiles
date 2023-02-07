@@ -12,3 +12,7 @@ do
 
     ln -snfv "$DOTPATH/$f" "$HOME/$f"
 done
+
+mkdir -p ~/.config/nvim
+ln -snfv $DOTPATH/.vimrc ~/.config/nvim/init.vim
+
