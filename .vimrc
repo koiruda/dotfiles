@@ -25,3 +25,4 @@ nnoremap U <c-r>
 nnoremap K 10<Up>
 nnoremap J 10<Down>
 
+nmap <C-c><C-c> :nohl<CR>
