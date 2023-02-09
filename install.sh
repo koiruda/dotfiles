@@ -21,7 +21,6 @@ if [ -d "${ZINIT_HOME}" ]; then
 else
     echo "Installing zinit..."
     git clone https://github.com/zdharma-continuum/zinit.git "${ZINIT_HOME}"
-    source "${ZINIT_HOME}/zinit.zsh"
 fi
 
 cd ~/

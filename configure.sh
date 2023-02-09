@@ -22,3 +22,6 @@ done
 # Link vimrc to init.vim
 mkdir -p ~/.config/nvim
 ln -snfv "${DOTPATH}/.vimrc" "${XDG_CONFIG_HOME}/nvim/init.vim"
+
+ln -sfv "$XDG_CONFIG_HOME/zsh/.zshrc" "${HOME}/.zshrc"
+ln -sfv "$XDG_CONFIG_HOME/zsh/.zshenv" "${HOME}/.zshenv"

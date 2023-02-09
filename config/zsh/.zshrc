@@ -1,3 +1,7 @@
+# zinit
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+source "${ZINIT_HOME}/zinit.zsh"
+
 # History
 export HISTFILE="${XDG_STATE_HOME}/.zsh_history"
 export HISTSIZE=1000000000
@@ -9,7 +13,6 @@ setopt AUTO_PUSHD
 setopt GLOBDOTS
 setopt PUSHD_IGNORE_DUPS
 setopt PUSHD_SILENT
-setopt SETOPT CORRECT
 setopt SHARE_HISTORY
 setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_DUPS
@@ -20,12 +23,9 @@ setopt HIST_NO_STORE
 setopt HIST_EXPAND
 setopt INC_APPEND_HISTORY
 
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-
 # Load powerlevel10k theme
-zinit ice depth"1"
-zinit light romkatv/powerlevel10k
+zinit ice depth=1; zinit light romkatv/powerlevel10k
+source "${XDG_CONFIG_HOME}/zsh/.p10k.zsh"
 
 function git_status() {
     echo git status
@@ -55,8 +55,6 @@ zinit light tj/git-extras
 zinit ice atclone"dircolors -b LS_COLORS > c.zsh" atpull'%atclone' pick"c.zsh" nocompile'!'
 zinit light trapd00r/LS_COLORS
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 ### End of Zinit's installer chunk
 
@@ -87,3 +85,6 @@ alias gr2='git rebase -i HEAD~~'
 alias gr3='git rebase -i HEAD~~~'
 alias gr4='git rebase -i HEAD~~~~'
 alias gr5='git rebase -i HEAD~~~~~'
+
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
