@@ -46,8 +46,8 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 zinit light zsh-users/zaw
 
-function git_status() {
-    echo git status
+function git_status {
+    echo "git status"
     git status -sb
     zle reset-prompt
 }
@@ -56,3 +56,10 @@ zle -N git_status
 bindkey '^r' zaw-history
 bindkey '^g' zaw-git-branches
 bindkey '^v' git_status
+bindkey '^f' forward-word
+bindkey '^b' backward-word
+bindkey '^y' kill-word
+bindkey '^h' backward-kill-word
+
+autoload -U select-word-style
+select-word-style bash
