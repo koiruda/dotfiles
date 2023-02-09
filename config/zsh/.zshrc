@@ -1,25 +1,42 @@
-
-
-export HISTFILESIZE=1000000000
+# History
+export HISTFILE="${XDG_STATE_HOME}/.zsh_history"
 export HISTSIZE=1000000000
-export HISTFILE=~/.zsh_history
 export SAVEHIST=1000000000
+DIRSTACKSIZE=100
 
-setopt share_history
-setopt hist_find_no_dups
-setopt hist_ignore_dups
-setopt hist_ignore_all_dups
-setopt hist_reduce_blanks
-setopt hist_save_no_dups
-setopt hist_no_store
-setopt hist_expand
-setopt inc_append_history
-
+setopt AUTO_CD
+setopt AUTO_PUSHD
+setopt GLOBDOTS
+setopt PUSHD_IGNORE_DUPS
+setopt PUSHD_SILENT
+setopt SETOPT CORRECT
+setopt SHARE_HISTORY
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_NO_STORE
+setopt HIST_EXPAND
+setopt INC_APPEND_HISTORY
 
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-zinit ice depth=1; zplugin light romkatv/powerlevel10k
+# Load powerlevel10k theme
+zinit ice depth"1"
+zinit light romkatv/powerlevel10k
+
+function git_status() {
+    echo git status
+    git status -sb
+    zle reset-prompt
+}
+zle -N git_status
+
+bindkey '^r' zaw-history
+bindkey '^g' zaw-git-branches
+bindkey '^v' git_status
 
 zinit light-mode for \
     zsh-users/zsh-autosuggestions \
@@ -37,20 +54,6 @@ zinit light tj/git-extras
 
 zinit ice atclone"dircolors -b LS_COLORS > c.zsh" atpull'%atclone' pick"c.zsh" nocompile'!'
 zinit light trapd00r/LS_COLORS
-
-function git_status() {
-    echo git status
-    git status -sb
-    zle reset-prompt
-}
-zle -N git_status
-
-bindkey '^r' zaw-history
-bindkey '^g' zaw-git-branches
-bindkey '^v' git_status
-
-autoload -Uz compinit
-compinit
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
