@@ -11,6 +11,9 @@ ln -snfv "${DOTPATH}/config/zsh/.zshrc" "${XDG_CONFIG_HOME}/zsh/.zshrc"
 ln -snfv "${DOTPATH}/config/zsh/.zshrc.lazy" "${XDG_CONFIG_HOME}/zsh/.zshrc.lazy"
 ln -snfv "${DOTPATH}/config/zsh/.p10k.zsh" "${XDG_CONFIG_HOME}/zsh/.p10k.zsh"
 
+ln -sfv "$XDG_CONFIG_HOME/zsh/.zshrc" "${HOME}/.zshrc"
+ln -sfv "$XDG_CONFIG_HOME/zsh/.zshenv" "${HOME}/.zshenv"
+
 cd "${DOTPATH}"
 
 for f in .??*
@@ -23,7 +26,3 @@ done
 # Link vimrc to init.vim
 mkdir -p ~/.config/nvim
 ln -snfv "${DOTPATH}/.vimrc" "${XDG_CONFIG_HOME}/nvim/init.vim"
-
-ln -sfv "$XDG_CONFIG_HOME/zsh/.zshrc" "${HOME}/.zshrc"
-ln -sfv "$XDG_CONFIG_HOME/zsh/.zshrc.lazy" "${HOME}/.zshrc.lazy"
-ln -sfv "$XDG_CONFIG_HOME/zsh/.zshenv" "${HOME}/.zshenv"

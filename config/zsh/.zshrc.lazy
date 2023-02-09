@@ -56,6 +56,3 @@ zle -N git_status
 bindkey '^r' zaw-history
 bindkey '^g' zaw-git-branches
 bindkey '^v' git_status
-
-# autoload -Uz _zinit
-# (( ${+_comps} )) && _comps[zinit]=_zinit
