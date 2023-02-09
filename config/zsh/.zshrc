@@ -28,6 +28,18 @@ setopt HIST_NO_STORE
 setopt HIST_EXPAND
 setopt INC_APPEND_HISTORY
 
+# Run ls command when directory changed
+chpwd() {
+    file_count=`ls -1U | wc -l`
+    line_count=`COLUMNS=${COLUMNS} ls -C | wc -l`
+    if [ ${line_count} -lt 10 ]; then
+        ls
+        return 0
+    fi
+    COLUMNS=${COLUMNS} ls -C | head -n 5
+    echo "...more files. Total: ${file_count} files"
+}
+
 # Load powerlevel10k theme
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 source "${ZSH_DOT_DIR}/.p10k.zsh"
