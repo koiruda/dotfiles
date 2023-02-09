@@ -1,0 +1,61 @@
+# Aliases
+alias vi='nvim'
+
+alias t='tig'
+alias ta='tig --all'
+
+alias g='git'
+alias ga='git add'
+alias gb='git branch'
+alias gc='git commit'
+alias gd='git diff'
+alias gp='git pull'
+alias gpu='git push'
+alias gs='git status'
+alias gsw='git switch'
+alias gre='git restore'
+alias gr='git rebase'
+alias grc='git rebase --continue'
+alias gra='git rebase --abort'
+alias grs='git rebase --skip'
+alias gr1='git rebase -i HEAD~'
+alias gr2='git rebase -i HEAD~~'
+alias gr3='git rebase -i HEAD~~~'
+alias gr4='git rebase -i HEAD~~~~'
+alias gr5='git rebase -i HEAD~~~~~'
+
+# Load plugins and bindkey settings
+zinit wait lucid light-mode for \
+    zsh-users/zsh-autosuggestions \
+    zdharma/fast-syntax-highlighting \
+    zdharma/history-search-multi-word \
+    b4b4r07/enhancd \
+    zsh-users/zsh-completions
+
+zinit ice wait lucid from"gh-r" as"program"
+zinit light junegunn/fzf-bin
+
+zinit ice wait lucid as"program" pick"$ZPFX/bin/git-*" make"PREFIX=$ZPFX"
+zinit light tj/git-extras
+
+zinit ice wait lucid atclone"dircolors -b LS_COLORS > c.zsh" atpull'%atclone' pick"c.zsh" nocompile'!'
+zinit light trapd00r/LS_COLORS
+
+zstyle ':completion:*:default' menu select=2
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
+zinit light zsh-users/zaw
+
+function git_status() {
+    echo git status
+    git status -sb
+    zle reset-prompt
+}
+zle -N git_status
+
+bindkey '^r' zaw-history
+bindkey '^g' zaw-git-branches
+bindkey '^v' git_status
+
+# autoload -Uz _zinit
+# (( ${+_comps} )) && _comps[zinit]=_zinit
