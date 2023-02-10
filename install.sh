@@ -7,7 +7,7 @@ XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 
 sudo apt update
 sudo apt upgrade
-sudo apt install curl git tig vim shellcheck zsh -y
+sudo apt install curl git tig vim shellcheck expect python3-pygments file zsh -y
 
 echo "Installing latest neovim..."
 wget -P /tmp https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb && \

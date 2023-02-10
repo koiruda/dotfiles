@@ -55,7 +55,8 @@ zle -N git_status
 
 function open_vscode {
     local file
-    file=$(find . -type f -not -path "*/.git/*" | fzf)
+    file=$(find . -type f -not -path "*/.git/*" | fzf --preview "(pygmentize {} ||
+        cat {}) &> /dev/null | head -200")
     if [[ -n "${file}" ]]; then
         code "${file}"
     fi
