@@ -17,8 +17,8 @@ nnoremap gk k
 nnoremap n nzz
 nnoremap N Nzz
 
-nnoremap h B
-nnoremap l W
+nnoremap h b
+nnoremap l w
 
 nnoremap U <c-r>
 
