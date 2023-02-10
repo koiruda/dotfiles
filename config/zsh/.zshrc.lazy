@@ -43,8 +43,10 @@ zinit light trapd00r/LS_COLORS
 autoload -Uz compinit && compinit -u
 zstyle ':completion:*:default' menu select=2
 zstyle ':completion:*:default' list-colors "${(s.:.)LS_COLORS}"
-
 zinit light zsh-users/zaw
+
+unalias zi
+eval "$(zoxide init zsh)"
 
 function git_status {
     echo "git status"
