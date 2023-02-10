@@ -53,6 +53,16 @@ function git_status {
 }
 zle -N git_status
 
+function open_vscode {
+    local file
+    file=$(find . -type f -not -path "*/.git/*" | fzf)
+    if [[ -n "${file}" ]]; then
+        code "${file}"
+    fi
+}
+zle -N open_vscode
+
+bindkey '^o' open_vscode
 bindkey '^r' zaw-history
 bindkey '^g' zaw-git-branches
 bindkey '^v' git_status
