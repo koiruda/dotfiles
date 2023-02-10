@@ -61,7 +61,9 @@ function open_vscode {
         cat {}) &> /dev/null | head -200")
     if [[ -n "${file}" ]]; then
         code "${file}"
+        echo "code ${file}"
     fi
+    zle reset-prompt
 }
 zle -N open_vscode
 
