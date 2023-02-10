@@ -41,8 +41,9 @@ zinit light tj/git-extras
 zinit ice wait lucid atclone"dircolors -b LS_COLORS > c.zsh" atpull'%atclone' pick"c.zsh" nocompile'!'
 zinit light trapd00r/LS_COLORS
 
+autoload -Uz compinit && compinit -u
 zstyle ':completion:*:default' menu select=2
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*:default' list-colors "${(s.:.)LS_COLORS}"
 
 zinit light zsh-users/zaw
 
