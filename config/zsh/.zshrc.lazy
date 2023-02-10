@@ -4,7 +4,7 @@ alias v='nvim'
 alias t='tig'
 alias ta='tig --all'
 alias g='git'
-alias ga='git add'
+alias ga='git_add'
 alias gb='git branch'
 alias gc='git commit'
 alias gd='git diff'
@@ -66,6 +66,18 @@ function open_vscode {
     zle reset-prompt
 }
 zle -N open_vscode
+
+function git_add {
+   local file
+   file=$(unbuffer git status -s | fzf -m --ansi --preview="echo {} | awk '{print \$2}' | xargs git diff --color" | awk '{print $2}')
+   if [[ -n "$file" ]]; then
+        file=$(tr '\n' ' ' <<< "$file" | sed 's/^\s*\|\s*$//g')
+        echo "git add ${file}"
+        git add "${file}"
+        echo "git status -sb"
+        git status -sb
+    fi
+}
 
 bindkey '^o' open_vscode
 bindkey '^r' zaw-history
