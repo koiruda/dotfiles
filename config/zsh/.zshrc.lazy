@@ -79,6 +79,32 @@ function git_add {
     fi
 }
 
+function up_directory {
+    zle push-line
+    echo "cd .."
+    builtin cd .. || exit
+    zle accept-line
+}
+zle -N up_directory
+
+function down_directory {
+    local directory
+    directory=$(find . -mindepth 1 -maxdepth 1 -type d -not -name ".git" | fzf --select-1 --exit-0)
+    if [[ -e "${directory}" ]]; then
+        zle push-line
+        echo "cd ${directory}"
+        builtin cd "${directory}" || exit
+        zle accept-line
+    fi
+}
+zle -N down_directory
+
+typeset -g -A key
+key[PageDown]="${terminfo[knp]}"
+key[PageUp]="${terminfo[kpp]}"
+[[ -n "${key[PageDown]}" ]] && bindkey -- "${key[PageDown]}" down_directory
+[[ -n "${key[PageUp]}" ]] && bindkey -- "${key[PageUp]}" up_directory
+
 bindkey '^o' open_vscode
 bindkey '^r' zaw-history
 bindkey '^g' zaw-git-branches
