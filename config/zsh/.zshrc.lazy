@@ -1,5 +1,6 @@
 # Aliases
 alias ll='ls -al'
+alias c='code'
 alias v='nvim'
 alias t='tig'
 alias ta='tig --all'
@@ -68,9 +69,9 @@ function open_vscode {
 zle -N open_vscode
 
 function git_add {
-   local file
-   file=$(unbuffer git status -s | fzf -m --ansi --preview="echo {} | awk '{print \$2}' | xargs git diff --color" | awk '{print $2}')
-   if [[ -n "$file" ]]; then
+    local file
+    file=$(unbuffer git status -s | fzf -m --ansi --preview="echo {} | awk '{print \$2}' | xargs git diff --color" | awk '{print $2}')
+    if [[ -n "$file" ]]; then
         file=$(tr '\n' ' ' <<< "$file" | sed 's/^\s*\|\s*$//g')
         echo "git add ${file}"
         git add "${file}"
