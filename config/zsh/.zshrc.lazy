@@ -1,5 +1,7 @@
 # Aliases
-alias ll='ls -al'
+alias l='ls -F --color=auto'
+alias ll='l -al'
+alias grep='grep --color=always'
 alias c='code'
 alias v='nvim'
 alias t='tig'
@@ -43,7 +45,8 @@ zinit light trapd00r/LS_COLORS
 
 autoload -Uz compinit && compinit -u
 zstyle ':completion:*:default' menu select=2
-zstyle ':completion:*:default' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' list-colors "${LS_COLORS}"
 zinit light zsh-users/zaw
 
 unalias zi

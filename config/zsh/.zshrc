@@ -28,6 +28,8 @@ setopt HIST_NO_STORE
 setopt HIST_EXPAND
 setopt INC_APPEND_HISTORY
 setopt NOAUTOREMOVESLASH
+setopt MAGIC_EQUAL_SUBST
+setopt HIST_VERIFY
 
 # Run ls command when directory changed
 chpwd() {
