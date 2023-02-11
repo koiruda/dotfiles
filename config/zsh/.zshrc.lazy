@@ -75,7 +75,7 @@ function git_add {
     local file
     file=$(unbuffer git status -s | fzf -m --ansi --preview="echo {} | awk '{print \$2}' | xargs git diff --color" | awk '{print $2}')
     if [[ -n "$file" ]]; then
-        echo "${file}" | xargs -I{} git add {} && echo "git add {}"
+        echo "${file}" | xargs git add
         echo "git status -sb"
         git status -sb
     fi
