@@ -1,4 +1,5 @@
 # Aliases
+alias p='ps aux'
 alias l='ls -F --color=auto'
 alias ll='l -al'
 alias grep='grep --color=always'
