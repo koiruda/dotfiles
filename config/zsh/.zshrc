@@ -19,6 +19,7 @@ setopt GLOBDOTS
 setopt PUSHD_IGNORE_DUPS
 setopt PUSHD_SILENT
 setopt SHARE_HISTORY
+setopt EXTENDED_HISTORY
 setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
@@ -36,7 +37,7 @@ chpwd() {
     file_count=`ls -1U | wc -l`
     line_count=`COLUMNS=${COLUMNS} ls -C | wc -l`
     if [ ${line_count} -lt 10 ]; then
-        ls
+        ls -F --color=auto
         return 0
     fi
     COLUMNS=${COLUMNS} ls -C | head -n 5
