@@ -30,4 +30,6 @@ nnoremap J 10<Down>
 nnoremap zj zt
 nnoremap zk zb
 
+nnoremap QQ ZQ
+
 nmap <C-c><C-c> :nohl<CR>
