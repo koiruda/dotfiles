@@ -2,6 +2,7 @@
 alias p='ps aux'
 alias l='ls -F --color=auto'
 alias ll='l -al'
+alias cat='batcat --color=always'
 alias grep='grep --color=always'
 alias c='code'
 alias v='nvim'
@@ -62,8 +63,7 @@ zle -N git_status
 
 function open_vscode {
     local file
-    file=$(find . -type f -not -path "*/.git/*" | fzf --preview "(pygmentize {} ||
-        cat {}) &> /dev/null | head -200")
+    file=$(find . -type f -not -path "*/.git/*" | fzf --preview "batcat {} --color=always &> /dev/null | head -200")
     if [[ -n "${file}" ]]; then
         code "${file}"
         echo "code ${file}"
@@ -101,6 +101,11 @@ function down_directory {
     fi
 }
 zle -N down_directory
+
+function fzf_cd {
+    local directories
+    directories=$(find . -type d -not -name ".git" | fzf --select-1 --exit-0)
+}
 
 typeset -g -A key
 key[PageDown]="${terminfo[knp]}"
