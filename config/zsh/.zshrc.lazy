@@ -103,9 +103,16 @@ function down_directory {
 zle -N down_directory
 
 function fzf_cd {
-    local directories
-    directories=$(find . -type d -not -name ".git" | fzf --select-1 --exit-0)
+    local directory
+    directory=$(find . -type d -not -path "*/.git/*" -not -name ".git" | fzf --select-1 --exit-0 --preview="tree -C {}")
+    if [[ -e "${directory}" ]]; then
+        zle push-line
+        echo "cd ${directory}"
+        builtin cd "${directory}" || exit
+        zle accept-line
+    fi
 }
+zle -N fzf_cd
 
 typeset -g -A key
 key[PageDown]="${terminfo[knp]}"
@@ -114,6 +121,7 @@ key[PageUp]="${terminfo[kpp]}"
 [[ -n "${key[PageUp]}" ]] && bindkey -- "${key[PageUp]}" up_directory
 
 bindkey '^o' open_vscode
+bindkey '^[c' fzf_cd
 bindkey '^r' zaw-history
 bindkey '^g' zaw-git-branches
 bindkey '^v' git_status
