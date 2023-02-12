@@ -2,6 +2,7 @@
 alias p='ps aux'
 alias l='ls -F --color=auto'
 alias ll='l -al'
+alias h='history -t "%F %H:%M"'
 alias cat='batcat --color=always'
 alias grep='grep --color=always'
 alias c='code'
