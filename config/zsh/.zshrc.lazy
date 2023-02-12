@@ -27,10 +27,6 @@ alias gr3='git rebase -i HEAD~~~'
 alias gr4='git rebase -i HEAD~~~~'
 alias gr5='git rebase -i HEAD~~~~~'
 
-# Load fzf
-source "/usr/share/doc/fzf/examples/key-bindings.zsh"
-source /usr/share/doc/fzf/examples/completion.zsh
-
 # Load plugins and bindkey settings
 zinit wait lucid light-mode for \
     zsh-users/zsh-autosuggestions \
