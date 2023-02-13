@@ -6,6 +6,9 @@ alias h='history -t "%F %H:%M"'
 alias cat='batcat --color=always'
 alias grep='grep --color=always'
 alias fd='fdfind --color=always'
+alias e='exa -F'
+alias el='exa -aghHliF'
+alias et='exa -aghHliFTI ".git"'
 alias c='code'
 alias v='nvim'
 alias t='tig'
@@ -44,7 +47,7 @@ zinit light junegunn/fzf-bin
 zinit ice wait lucid as"program" pick"$ZPFX/bin/git-*" make"PREFIX=$ZPFX"
 zinit light tj/git-extras
 
-zinit ice wait lucid atclone"dircolors -b LS_COLORS > c.zsh" atpull'%atclone' pick"c.zsh" nocompile'!'
+zinit ice wait lucid atclone"dircolors -b LS_COLORS > c.zsh" atpull'%atclone' pick"c.zsh" nocompile'!' atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
 zinit light trapd00r/LS_COLORS
 
 autoload -Uz compinit && compinit -u
