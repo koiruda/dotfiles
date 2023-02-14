@@ -68,7 +68,7 @@ zle -N git_status
 
 function open_vscode {
     local file
-    file=$(fdfind -tf -H -E ".git" | fzf --preview "batcat {} --color=always &> /dev/null | head -200")
+    file=$(fdfind -tf | fzf --preview "batcat {} --color=always &> /dev/null | head -200")
     if [[ -n "${file}" ]]; then
         code "${file}"
         echo "code ${file}"
@@ -97,7 +97,7 @@ zle -N up_directory
 
 function down_directory {
     local directory
-    directory=$(fdfind -td -H -E ".git" -d1 | fzf --select-1 --exit-0)
+    directory=$(fdfind -td -d1 | fzf --select-1 --exit-0)
     if [[ -e "${directory}" ]]; then
         zle push-line
         echo "cd ${directory}"
