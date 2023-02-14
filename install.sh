@@ -27,6 +27,6 @@ cd ~/
 
 source "${DOTPATH}/configure.sh"
 
-chsh -s /usr/bin/zsh
+sudo chsh -s /usr/bin/zsh
 
 exec "$SHELL" -l
