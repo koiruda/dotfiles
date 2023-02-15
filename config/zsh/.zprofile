@@ -7,3 +7,9 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
    fi
    eval `cat $HOME/.ssh/ssh-agent`
 fi
+
+private_key="$HOME/.ssh/id_ed25519"
+
+if [ -e "$private_key" ]; then
+   ssh-add "$private_key"
+fi
