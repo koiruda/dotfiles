@@ -52,3 +52,11 @@ source "${ZSH_DOT_DIR}/.p10k.zsh"
 zinit wait lucid null for \
     atinit'source "${ZSH_DOT_DIR}/.zshrc.lazy"' \
     @'zdharma-continuum/null'
+
+# Wsl only
+if [[ "$(uname -r)" == *microsoft* ]]; then
+    service docker status > /dev/null 2>&1
+    if [ $? = 1 ]; then
+        sudo service docker start
+    fi
+fi
