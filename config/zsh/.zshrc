@@ -56,7 +56,7 @@ zinit wait lucid null for \
 # Wsl only
 if [[ "$(uname -r)" == *microsoft* ]]; then
     service docker status > /dev/null 2>&1
-    if [ $? = 1 ]; then
+    if [ $? != 0 ]; then
         sudo service docker start
     fi
 fi
