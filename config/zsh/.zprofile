@@ -10,6 +10,6 @@ fi
 
 private_key="$HOME/.ssh/id_ed25519"
 
-if [ -e "$private_key" ]; then
+if [ -e "$private_key" ] && [ type ssh-add &> /dev/null ]; then
    ssh-add "$private_key"
 fi

@@ -54,7 +54,7 @@ zinit wait lucid null for \
     @'zdharma-continuum/null'
 
 # Wsl only
-if [[ "$(uname -r)" == *microsoft* ]]; then
+if [[ "$(uname -r)" == *microsoft* ]] && [ type docker &> /dev/null ]; then
     service docker status > /dev/null 2>&1
     if [ $? != 0 ]; then
         sudo service docker start
