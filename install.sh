@@ -15,6 +15,9 @@ wget -P /tmp https://github.com/neovim/neovim/releases/download/stable/nvim-linu
 sudo apt install /tmp/nvim-linux64.deb -y && \
 rm /tmp/nvim-linux64.deb
 
+echo "Installing latest pyenv..."
+git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 if [ -d "${ZINIT_HOME}" ]; then
     echo "zinit is already installed."
