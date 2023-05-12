@@ -28,9 +28,8 @@ else
 fi
 
 cd ~/
-
 source "${DOTPATH}/configure.sh"
-
 sudo chsh -s /usr/bin/zsh
 
-exec "$SHELL" -l
+# Disable shell activate as it does not work in WSL
+# exec "$SHELL" -l
