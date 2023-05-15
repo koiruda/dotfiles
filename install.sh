@@ -8,12 +8,8 @@ XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 sudo apt update
 sudo apt upgrade
 sudo apt install -y curl git tig vim shellcheck expect file fd-find ripgrep bat exa zoxide zsh \
+    neovim \
     socat # for wsl
-
-echo "Installing latest neovim..."
-wget -P /tmp https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb && \
-sudo apt install /tmp/nvim-linux64.deb -y && \
-rm /tmp/nvim-linux64.deb
 
 echo "Installing latest pyenv..."
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
