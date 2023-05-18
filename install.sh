@@ -2,7 +2,7 @@
 
 set -ue
 
-DOTPATH=~/dotfiles
+DOTPATH="${HOME}/dotfiles"
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 
 sudo apt update
@@ -11,8 +11,14 @@ sudo apt install -y curl git tig vim shellcheck expect file fd-find ripgrep bat 
     neovim \
     socat # for wsl
 
-echo "Installing latest pyenv..."
-git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+PYENV_HOME="${HOME}/.pyenv"
+if [ -d "${PYENV_HOME}" ]; then
+    echo "pyenv is already installed."
+    git -C "${PYENV_HOME}" pull
+else
+    echo "Installing pyenv..."
+    git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+fi
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 if [ -d "${ZINIT_HOME}" ]; then
