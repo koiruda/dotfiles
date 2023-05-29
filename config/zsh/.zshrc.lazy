@@ -119,6 +119,19 @@ function fzf_cd {
 }
 zle -N fzf_cd
 
+function fzf_pass {
+    local pass_home="${HOME}/.password-store"
+    if [[ -e "${pass_home}" ]]; then
+        local target
+        target=$(fdfind -0 -tf --base-directory "${pass_home}" | xargs -0 -I {} echo {} | sed 's/\.gpg//g' | fzf --select-1 --exit-0)
+        if [ -n "${target}" ]; then
+            pass -c "${target}"
+            zle accept-line
+        fi
+    fi
+}
+zle -N fzf_pass
+
 typeset -g -A key
 key[PageDown]="${terminfo[knp]}"
 key[PageUp]="${terminfo[kpp]}"
@@ -127,6 +140,7 @@ key[PageUp]="${terminfo[kpp]}"
 
 bindkey '^o' open_vscode
 bindkey '^[c' fzf_cd
+bindkey '^[p' fzf_pass
 bindkey '^r' zaw-history
 bindkey '^g' zaw-git-branches
 bindkey '^v' git_status
