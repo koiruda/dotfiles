@@ -125,8 +125,14 @@ function fzf_pass {
         local target
         target=$(fdfind -0 -tf --base-directory "${pass_home}" | xargs -0 -I {} echo {} | sed 's/\.gpg//g' | fzf --select-1 --exit-0)
         if [ -n "${target}" ]; then
+            tmp_buffer=$BUFFER
+            tmp_cursor=$CURSOR
+            BUFFER=""
+            zle redisplay
             pass -c "${target}"
-            zle accept-line
+            BUFFER=$tmp_buffer
+            CURSOR=$tmp_cursor
+            zle redisplay
         fi
     fi
 }
