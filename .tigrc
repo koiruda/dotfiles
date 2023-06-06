@@ -2,3 +2,18 @@ set main-view = line-number:yes,interval=1 date:yes,local=yes id author:full com
 set diff-options = -m --first-parent
 set main-view-date = custom
 set main-view-date-format = "%y%m%d %H%M"
+
+set blame-view = date:default author:email-user id:yes,color line-number:yes,interval=1 text
+set diff-view = line-number:yes,interval=1 text:yes,commit-title-overflow=no
+
+set ignore-case = true
+set diff-options = -m --first-parent
+set diff-highlight = true
+
+bind generic g move-first-line
+bind generic G move-last-line
+bind generic J move-next-merge
+bind generic K move-prev-merge
+bind generic <Ctrl-l> scroll-right
+bind generic <Ctrl-h> scroll-left
+bind generic y @bash -c "echo -n '%(commit)' | clip.exe"
