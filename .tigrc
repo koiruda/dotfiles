@@ -17,4 +17,5 @@ bind generic K move-prev-merge
 bind generic l scroll-right
 bind generic h scroll-left
 bind generic y @bash -c "echo -n '%(commit)' | clip.exe"
-bind generic p @bash -c "git show-branch --sha1-name | grep '*' | grep -v '$(git rev-parse --abbrev-ref HEAD)' | grep '+' | head -1 | awk '{print $2}' | sed -r 's/^\\[(\\w+)\\]$/\\1/' | clip.exe"
+bind generic Y @bash -c "git show-branch --sha1-name | grep '*' | grep -v '$(git rev-parse --abbrev-ref HEAD)' | grep '+' | head -1 | git show-branch --sha1-name | grep '*' | grep -v '$(git rev-parse --abbrev-ref HEAD)' | grep '+' | head -1 | sed -r 's/^.*?\\[(\\w{8})\\].*?$/\\1/' | clip.exe"
+bind generic p :goto %(commit)^
