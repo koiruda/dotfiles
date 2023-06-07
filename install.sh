@@ -7,7 +7,7 @@ XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 
 sudo apt update
 sudo apt upgrade
-sudo apt install -y curl git tig vim shellcheck expect file fd-find ripgrep bat exa zoxide zsh \
+sudo apt install -y curl git make tig vim shellcheck expect file fd-find ripgrep bat exa zoxide zsh \
     neovim \
     socat # for wsl
 
@@ -27,6 +27,16 @@ if [ -d "${ZINIT_HOME}" ]; then
 else
     echo "Installing zinit..."
     git clone https://github.com/zdharma-continuum/zinit.git "${ZINIT_HOME}"
+fi
+
+DIFF_HIGHLIGHT_HOME="/usr/share/doc/git/contrib/diff-highlight"
+if [ -d "${DIFF_HIGHLIGHT_HOME}" ]; then
+    if [ ! -f "${DIFF_HIGHLIGHT_HOME}/diff-highlight" ]; then
+        echo "Installing diff-highlight..."
+        cd "${DIFF_HIGHLIGHT_HOME}"
+        sudo make
+        sudo ln -s /usr/share/doc/git/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
+    fi
 fi
 
 cd ~/
