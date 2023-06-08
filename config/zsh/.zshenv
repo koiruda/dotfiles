@@ -9,3 +9,5 @@ export XDG_CACHE_HOME="$HOME/.cache"
 
 # zsh
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export PRIVATE_ETH_IP="10.0.0.1"
+export PRIVATE_ETH_IP_MASK="${PRIVATE_ETH_IP}/8"
