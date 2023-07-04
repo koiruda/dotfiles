@@ -68,3 +68,8 @@ eval "$(pyenv init --path)"
 
 # fzf
 export FZF_DEFAULT_OPTS='--bind ctrl-b:preview-up,ctrl-f:preview-down'
+
+# starting directory
+if [[ `pwd` =~ ^/mnt/c/Users/ ]]; then
+    cd
+fi
