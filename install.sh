@@ -4,9 +4,28 @@ set -ue
 
 DOTPATH="${HOME}/dotfiles"
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
+
+if [ ! -d "${XDG_CONFIG_HOME}" ]; then
+    mkdir -p "${XDG_CONFIG_HOME}"
+fi
+
+if [ ! -d "${XDG_CACHE_HOME}" ]; then
+    mkdir -p "${XDG_CACHE_HOME}"
+fi
+
+if [ ! -d "${XDG_DATA_HOME}" ]; then
+    mkdir -p "${XDG_DATA_HOME}"
+fi
+
+if [ ! -d "${XDG_STATE_HOME}" ]; then
+    mkdir -p "${XDG_STATE_HOME}"
+fi
 
 sudo apt update
-sudo apt upgrade
+sudo apt upgrade -y
 sudo apt install -y curl git make tig vim shellcheck expect file fd-find ripgrep bat exa zoxide zsh \
     neovim \
     socat # for wsl
