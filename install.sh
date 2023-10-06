@@ -32,7 +32,8 @@ sudo apt install -y curl git make tig vim shellcheck expect file fd-find ripgrep
 echo "Installing latest neovim..."
 wget -P /tmp/ https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
 tar -zxvf /tmp/nvim-linux64.tar.gz -C /tmp/
-sudo mv /tmp/nvim-linux64/ /usr/local/bin/
+sudo mv /tmp/nvim-linux64/ /usr/local/
+sudo ln -sfn /usr/local/nvim-linux64/bin/nvim /usr/local/bin/nvim
 
 PYENV_HOME="${HOME}/.pyenv"
 if [ -d "${PYENV_HOME}" ]; then
