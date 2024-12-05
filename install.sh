@@ -25,7 +25,6 @@ if [ ! -d "${XDG_STATE_HOME}" ]; then
 fi
 
 sudo apt update
-sudo apt upgrade -y
 sudo apt install -y curl git make tig vim shellcheck expect file fd-find ripgrep bat exa zoxide zsh \
     socat # for wsl
 
@@ -34,15 +33,6 @@ wget -P /tmp/ https://github.com/neovim/neovim/releases/latest/download/nvim-lin
 tar -zxvf /tmp/nvim-linux64.tar.gz -C /tmp/
 sudo mv /tmp/nvim-linux64/ /usr/local/
 sudo ln -sfn /usr/local/nvim-linux64/bin/nvim /usr/local/bin/nvim
-
-PYENV_HOME="${HOME}/.pyenv"
-if [ -d "${PYENV_HOME}" ]; then
-    echo "pyenv is already installed."
-    git -C "${PYENV_HOME}" pull
-else
-    echo "Installing pyenv..."
-    git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-fi
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 if [ -d "${ZINIT_HOME}" ]; then

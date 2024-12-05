@@ -61,11 +61,6 @@ if [[ "$(uname -r)" == *microsoft* ]] && type docker &> /dev/null; then
     fi
 fi
 
-# For pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-
 # fzf
 export FZF_DEFAULT_OPTS='--bind ctrl-b:preview-up,ctrl-f:preview-down'
 
