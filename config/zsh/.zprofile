@@ -36,3 +36,8 @@ if [ -f /proc/sys/fs/binfmt_misc/WSLInterop ]; then
 else
    sudo ln -sf ~/dotfiles/config/scripts/clip.sh /usr/local/bin/clip.exe
 fi
+
+# beep function
+if [ -f /proc/sys/fs/binfmt_misc/WSLInterop ]; then
+   sudo ln -sf ~/dotfiles/config/scripts/beep.sh /usr/local/bin/beep
+fi
