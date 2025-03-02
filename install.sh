@@ -25,14 +25,14 @@ if [ ! -d "${XDG_STATE_HOME}" ]; then
 fi
 
 sudo apt update
-sudo apt install -y curl git make tig vim shellcheck expect file fd-find ripgrep bat exa zoxide zsh \
+sudo apt install -y curl wget git make tig vim shellcheck expect file fd-find ripgrep bat exa zoxide zsh \
     socat # for wsl
 
 echo "Installing latest neovim..."
-wget -P /tmp/ https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
-tar -zxvf /tmp/nvim-linux64.tar.gz -C /tmp/
-sudo mv /tmp/nvim-linux64/ /usr/local/
-sudo ln -sfn /usr/local/nvim-linux64/bin/nvim /usr/local/bin/nvim
+wget -P /tmp/ https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+tar -zxvf /tmp/nvim-linux-x86_64.tar.gz -C /tmp/
+sudo mv /tmp/nvim-linux-x86_64/ /usr/local/
+sudo ln -sfn /usr/local/nvim-linux-x86_64/bin/nvim /usr/local/bin/nvim
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 if [ -d "${ZINIT_HOME}" ]; then
